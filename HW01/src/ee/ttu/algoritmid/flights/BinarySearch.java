@@ -66,20 +66,7 @@ public abstract class BinarySearch {
 //
 //    }
 //
-    public Node add_Recursive(Node root, FlightCrewMember key) {
-        //tree is empty
-        if (root == null) {
-            root = new Node(key);
-            return root;
-        }
-        //traverse the tree
-        if (key.getWorkExperience() < root.crewMember.getWorkExperience())     //insert in the left subtree
-            root.left = add_Recursive(root.left, key);
-        else if (key.getWorkExperience() > root.crewMember.getWorkExperience())    //insert in the right subtree
-            root.right = add_Recursive(root.right, key);
-        // return pointer
-        return root;
-    }
+
 
     public void inorder(){
         if(!waitingList.isEmpty()){

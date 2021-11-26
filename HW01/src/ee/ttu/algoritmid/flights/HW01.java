@@ -86,16 +86,36 @@ public class HW01 implements FlightCrewRegistrationSystem {
     }
 
     private FlightCrewMember getPilotByCopilot(FlightCrewMember copilot) {
-        return bstPilot.search(copilot);
+        List<FlightCrewMember> pilots = bstPilot.search(copilot);
+        if (pilots != null) {
+            if (pilots.size() > 1) {
+                return pilots.stream().min(Comparator.comparingDouble(i -> i.getWorkExperience() - copilot.getWorkExperience())).get();
+            }
+            return pilots.get(0);
+        }
+        return null;
     }
 
     private FlightCrewMember getCopilot(FlightCrewMember member) {
-        return bstCoPilot.search(member);
+        List<FlightCrewMember> coPilots = bstCoPilot.search(member);
+        if (coPilots != null) {
+            if (coPilots.size() > 1) {
+                return coPilots.stream().min(Comparator.comparingDouble(i -> Math.abs(i.getWorkExperience() - member.getWorkExperience()))).get();
+            }
+            return coPilots.get(0);
+        } return null;
     }
 
 
     private FlightCrewMember getFlightAttendantByCopilot(FlightCrewMember copilot) {
-        return bstFlightAttendant.search(copilot);
+        List<FlightCrewMember> attendants = bstFlightAttendant.search(copilot);
+        if (attendants != null) {
+            if (attendants.size() > 1) {
+                return attendants.stream().min(Comparator.comparingDouble(i -> Math.abs(i.getWorkExperience() - copilot.getWorkExperience()))).get();
+            }
+            return attendants.get(0);
+        }
+        return null;
     }
 
     public void removeCrewFromWaitingList(FlightCrewMember pilot, FlightCrewMember copilot, FlightCrewMember flightAttendant) {

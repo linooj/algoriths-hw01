@@ -243,6 +243,7 @@ public class SomeTests {
 
     private static void testRequestResponse(String caseId, HW01 solution, FlightCrewMember participant, Double[] expectedTeamExperience) {
 
+
         FlightCrew team = solution.registerToFlight(participant);
 
         if (team == null) {
