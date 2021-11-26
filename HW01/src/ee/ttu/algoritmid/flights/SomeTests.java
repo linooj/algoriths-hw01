@@ -11,6 +11,7 @@ public class SomeTests {
     public static void main(String[] args) {
         testEndToEndPublic1("case 1");
         testTreeEndToEndPublic3("case2");
+        System.out.println("alrighty");
     }
 
     private static void testEndToEndPublic1(String caseId) {
